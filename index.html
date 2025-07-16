@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simran's Taxi Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        transition {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <header class="bg-yellow-500 text-white py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">Simran's Taxi Service</h1>
+                    <p class="text-yellow-100">Reliable rides in Melbourne</p>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://placehold.co/100x100" alt="Logo showing a yellow taxi car with Simran's Taxi Service written below" class="rounded-full" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-4xl font-bold mb-4">Book Your Ride Today</h2>
+                <p class="text-xl mb-6">Safe, comfortable, and reliable taxi service in Sydney and surrounding areas.</p>
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+61447946200" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg transition">Call +61 447 946 200</a>
+                    <a href="#booking" class="bg-white hover:bg-gray-200 text-black font-bold py-3 px-6 rounded-lg transition">Book Online</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://placehold.co/600x400" alt="Modern yellow taxi on sunny Sydney street with Harbour Bridge in background" class="rounded-lg shadow-xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section id="booking" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Book Your Taxi</h2>
+            
+            <div class="max-w-2xl mx-auto bg-gray-100 p-8 rounded-xl shadow-md">
+                <form id="bookingForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="pickup" class="block text-gray-700 font-medium mb-2">Pickup Location</label>
+                            <input type="text" id="pickup" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="destination" class="block text-gray-700 font-medium mb-2">Destination</label>
+                            <input type="text" id="destination" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="date" class="block text-gray-700 font-medium mb-2">Pickup Date</label>
+                            <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="time" class="block text-gray-700 font-medium mb-2">Pickup Time</label>
+                            <input type="time" id="time" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="notes" class="block text-gray-700 font-medium mb-2">Special Instructions</label>
+                        <textarea id="notes" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg transition">Book Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition">
+                    <img src="https://placehold.co/400x300" alt="Airport terminal with taxis waiting outside" class="w-full h-48 object-cover rounded-lg mb-4" />
+                    <h3 class="text-xl font-bold mb-2">Airport Transfers</h3>
+                    <p class="text-gray-700">Reliable transfers to and from Sydney Airport. Flight tracking ensures we're always on time.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition">
+                    <img src="https://placehold.co/400x300" alt="Nighttime city view through taxi window showing bright city lights" class="w-full h-48 object-cover rounded-lg mb-4" />
+                    <h3 class="text-xl font-bold mb-2">City Rides</h3>
+                    <p class="text-gray-700">Quick and comfortable rides throughout Sydney. Local knowledge for the best routes.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover transition">
+                    <img src="https://placehold.co/400x300" alt="Corporate taxi with well-dressed executive entering the vehicle" class="w-full h-48 object-cover rounded-lg mb-4" />
+                    <h3 class="text-xl font-bold mb-2">Corporate Rides</h3>
+                    <p class="text-gray-700">Professional service for business needs. Discreet and punctual for important meetings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Driver Profile -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://placehold.co/400x500" alt="Professional taxi driver Simran Batth in front of a yellow cab, smiling with crossed arms" class="rounded-lg shadow-xl" />
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold mb-6">Meet Your Driver - Simran Batth</h2>
+                    <div class="prose max-w-none">
+                        <p class="text-lg mb-4">With over 8 years of experience driving in Sydney, I take pride in providing safe, comfortable, and reliable taxi services.</p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold mb-2 text-yellow-500">Why choose my service?</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Fully licensed and accredited driver</li>
+                                <li>Modern, clean, and well-maintained vehicle</li>
+                                <li>Knowledge of all Sydney routes and shortcuts</li>
+                                <li>Patient and courteous service</li>
+                                <li>Competitive rates and transparent pricing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <p class="font-medium">Driver contact:</p>
+                            <p class="text-xl font-bold">Simran Batth</p>
+                            <a href="tel:+61447946200" class="inline-block mt-2 bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg">+61 447 946 200</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-grayС -800 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60" alt="Happy middle-aged male customer with short hair smiling" class="rounded-full mr-4" />
+                        <div>
+                            <h3 class="font-bold">David Wilson</h3>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Simran is always on time and gets me to the airport with plenty of time before my flights. Great service!"</p>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60" alt="Senior female customer with glasses and silver hair smiling warmly" class="rounded-full mr-4" />
+                        <div>
+                            <h3 class="font-bold">Margaret Chen</h3>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p>"For my weekly medical appointments, I trust no one but Simran. Always patient and helpful with my walker."</p>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60" alt="Young female professional in business attire giving positive review" class="rounded-full mr-4" />
+                        <div>
+                            <h3 class="font-bold">Sarah Thompson</h3>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            
