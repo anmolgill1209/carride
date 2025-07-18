@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityRide Taxi Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2e86de;
+            --secondary: #54a0ff;
+            --dark: #222f3e;
+            --light: #f5f6fa;
+            --success: #26de81;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: white;
+            color: var(--primary);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(rgba(46, 134, 222, 0.9), rgba(84, 160, 255, 0.9)), url('https://placehold.co/1920x1080') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .booking-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .facilities {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .facility-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facility-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .facility-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-card .rating {
+            color: var(--warning);
+            margin-bottom: 1rem;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .user-details h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .user-details p {
+            font-style: normal;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .login-sections {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .login-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .login-box {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .login-box h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--dark);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Driver notification animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 134, 222, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(46, 134, 222, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 134, 222, 0);
+            }
+        }
+        
+        .driver-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            animation: pulse 2s infinite;
+            z-index: 2000;
+        }
+        
+        /* Map styles */
+        #map {
+            height: 300px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>CityRide</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Book Your Ride in Seconds</h2>
+            <p>Fast, reliable, and comfortable taxi services in your city. Available 24/7 for all your travel needs.</p>
+            
+            <div class="booking-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="pickup">Pickup Location</label>
+                        <input type="text" id="pickup" placeholder="Enter pickup address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" placeholder="Enter destination address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rideType">Ride Type</label>
+                        <select id="rideType" required>
+                            <option value="">Select ride type</option>
+                            <option value="standard">Standard Car</option>
+                            <option value="premium">Premium Car</option>
+                            <option value="xl">XL (6-7 passengers)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="facilities" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We provide premium taxi services tailored to your needs</p>
+            </div>
+            
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Airport Pickup</h3>
+                    <p>Reliable airport transfers with flight tracking for on-time arrivals.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <i class="fas fa-city"></i>
+                    <h3>City Rides</h3>
+                    <p>Quick and comfortable rides within the city at competitive rates.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Availability</h3>
+                    <p>We're available round the clock for all your travel needs.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Cashless Payments</h3>
+                    <p>Multiple payment options including credit cards and mobile wallets.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <i class="fas fa-baby-carriage"></i>
+                    <h3>Family Friendly</h3>
+                    <p>Child seats available upon request for safe family travel.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <i class="fas fa-luggage-cart"></i>
+                    <h3>Luggage Assistance</h3>
+                    <p>Special vehicles with ample space for your luggage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Don't just take our word for it - hear from our satisfied customers</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The best taxi service I've used in years. Always on time and the drivers are courteous and professional."</p>
+                    <div class="user-info">
+                        <img src="https://placehold.co/100x100" alt="Professional headshot of middle-aged male customer with short gray hair">
+                        <div class="user-details">
+                            <h4>Michael Johnson</h4>
+                            <p>Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Airport pickup was perfect - driver was waiting when I arrived and helped with my bags. Will definitely use again!"</p>
+                    <div class="user-info">
+                        <img src="https://placehold.co/100x100" alt="Smiling young female customer with curly hair wearing business attire">
+                        <div class="user-details">
+                            <h4>Sarah Williams</h4>
+                            <p>Business Traveler</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Great service at competitive prices. The app makes bookings easy and I love being able to track my ride."</p>
+                    <div class="user-info">
+                        <img src="https://placehold.co/100x100" alt="Senior male customer with glasses smiling in casual clothing">
+                        <div class="user-details">
+                            <h4>David Chen</h4>
+                            <p>Weekly Commuter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="login-sections" id="login">
+        <div class="container">
+            <div class="section-title">
+                <h2>Login to Your Account</h2>
+                <p>Access your personal or driver dashboard</p>
+            </div>
+            
+            <div class="login-container">
+                <div class="login-box">
+                    <h3>Customer Login</h3>
+                    <form id="customerLogin">
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p style="margin-top: 1rem;">Don't have an account? <a href="#" style="color: var(--primary);">Sign up</a></p>
+                </div>
+                
+                <div class="login-box">
+                    <h3>Driver Login</h3>
+                    <form id="driverLogin">
+                        <div class="form-group">
+                            <input type="text" placeholder="Driver ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <p>Driver Hotline: <strong>+61 447 946 200</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CityRide</h3>
+                    <p>Premium taxi services with a personal touch. Serving you since 2015.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Airport Transfers</a></li>
+                        <li><a href="#">City Rides</a></li>
+                        <li><a href="#">Corporate Accounts</a></li>
+                        <li><a href="#">Special Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CityRide Taxi Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="margin-bottom: 1rem; color: var(--primary);">Booking Confirmed!</h2>
+            <p>Your ride has been successfully booked. Your driver will arrive shortly.</p>
+            <p style="margin-top: 1rem;"><strong>Driver:</strong> John Smith (Male)</p>
+            <p><strong>Vehicle:</strong> Toyota Camry (White)</p>
+            <p><strong>Contact:</strong> +61 447 946 200</p>
+            
+            <div id="map" style="margin-top: 1.5rem;">
+                <!-- Map will be displayed here -->
+                <img src="https://placehold.co/600x300" alt="Live location map showing driver's route to pickup point">
+            </div>
+            
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <button class="btn btn-primary" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Driver Notification -->
+    <div id="driverNotification" class="driver-notification">
+        <i class="fas fa-bell" style="margin-right: 0.5rem;"></i>
+        New ride booked! Please check your dashboard.
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById("bookingModal");
+        const closeBtn = document.querySelector(".close");
+        
+        function openModal() {
+            modal.style.display = "block";
+            // Show driver notification
+            setTimeout(() => {
+                const notification = document.getElementById("driverNotification");
+                notification.style.display = "block";
+                
+                // Hide notification after 5 seconds
+                setTimeout(() => {
+                    notification.style.display = "none";
+                }, 5000);
+            }, 1500);
+        }
+        
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        
+        closeBtn.onclick = closeModal;
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Booking form submission
+        document.getElementById("bookingForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const pickup = document.getElementById("pickup").value;
+            const destination = document.getElementById("destination").value;
+            const rideType = document.getElementById("rideType").value;
+            
+            // In a real app, you would send this data to your backend
+            console.log("Booking submitted:", {
+                pickup,
+                destination,
+                rideType
+            });
+            
+            // Show confirmation modal
+            openModal();
+            
+            // In a real app, you would initiate location sharing here
+            initiateLocationSharing();
+        });
+        
+        // Simulate location sharing functionality
+        function initiateLocationSharing() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        console.log("Customer location shared:", position.coords);
+                        // In a real app, you would send this to your backend/driver
+                    },
+                    function(error) {
+                        console.error("Error getting location:", error);
+                    },
+                    { enableHighAccuracy: true }
+                );
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+        
+        // Login form handlers
+        document.getElementById("customerLogin").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Customer login functionality will be implemented in the full application.");
+        });
+        
+        document.getElementById("driverLogin").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Driver login functionality will be implemented in the full application.");
+        });
+    </script>
+</body>
+</html>
